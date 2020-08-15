@@ -12,12 +12,16 @@ import config from './env.js'
         try {
             const response = await fetch(proxyURL + apiURL);
             const data = await response.json();
-            // Render Artist Name
-            artist_name.innerText = `Artist: ${data.message.body.track_list[0].track.artist_name}`
-            // Render Track Name 
-            track_name.innerText = `Track: ${data.message.body.track_list[0].track.track_name}`
-            // Render Album Name
-            album_name.innerText = `Album: ${data.message.body.track_list[0].track.album_name}`
+            const trackList = data.message.body.track_list;
+            
+            trackList.map((e) => {
+                // Render Artist Name
+                artist_name.innerText = e.track.artist_name;
+                // Render Track Name
+                track_name.innerText = e.track.track_name;
+                // Render Album Name 
+                album_name.innerText = e.track.album_name;
+            })
         } catch (error) {
             console.log(error);
         }
