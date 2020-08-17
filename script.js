@@ -19,6 +19,8 @@ async function displayPopularMusic() {
       var artistDiv = document.createElement("h1")
       var trackDiv = document.createElement("div");
       var albumDiv = document.createElement("div");
+    // Reduce font size depending on artist_name length
+    track.track.artist_name.length > 20 ? artistDiv.classList.add('long-title') : artistDiv.classList.remove('long-title')
       artistDiv.append(document.createTextNode(track.track.artist_name));
       trackDiv.append(document.createTextNode(track.track.track_name));
       albumDiv.append(document.createTextNode(track.track.album_name));
