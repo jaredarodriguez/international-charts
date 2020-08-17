@@ -1,4 +1,4 @@
-const cardContainer = document.getElementById("card-container");
+const countryContainer = document.getElementById("country-container");
 
 import config from "./env.js";
 // Get lyric from API
@@ -15,7 +15,7 @@ async function displayPopularMusic() {
     // Create wrapper for track data
       const wrapperDiv = document.createElement("div");
       wrapperDiv.id = 'wrapper-div'
-    // Create Artist, track and album and add ID p
+    // Create Artist, track and album and add ID 
       var artistDiv = document.createElement("h1")
       var trackDiv = document.createElement("div");
       var albumDiv = document.createElement("div");
@@ -28,7 +28,7 @@ async function displayPopularMusic() {
       wrapperDiv.append(albumDiv);
     // Style wrapper 
     // Append wrapper to container div
-      cardContainer.appendChild(wrapperDiv);
+      countryContainer.appendChild(wrapperDiv);
     });
   } catch (error) {
     console.log(error);
