@@ -45,13 +45,13 @@ displayPopularMusic();
 
 // Events 
 function openSlideMenu() {
-  console.log('hit')
   document.getElementById('side-menu').style.width = '250px';
-  document.getElementById('main').style.marginLeft = '250px';
+  document.getElementById('country-container').style.marginLeft = '250px'
 }
 
 function closeSlideMenu() {
-  sideMenu.style.width = '0'
+  document.getElementById('side-menu').style.width = '0'
+  document.getElementById('country-container').style.marginLeft = '0'
 }
  
 // Event Listeners
