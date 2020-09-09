@@ -4,6 +4,8 @@ import config from "./env.js";
 const countryContainer = document.getElementById("country-container");
 const openSlide = document.getElementById('open-slide');
 const closeSlide = document.getElementById('close-slide');
+const country = document.getElementsByTagName('a');
+
 
 // Get top hits from API
 async function displayPopularMusic() {
@@ -53,7 +55,18 @@ function closeSlideMenu() {
   document.getElementById('side-menu').style.width = '0'
   document.getElementById('country-container').style.marginLeft = '0'
 }
+
+// function getCountryID(){
+//  let country = document.querySelector('#country');
+//  let countryCode = country.dataset.code;
+//  console.log(countryCode);
+// }
  
+function sayHello() {
+  console.log('hello')
+}
 // Event Listeners
 openSlide.addEventListener('click', openSlideMenu);
 closeSlide.addEventListener('click', closeSlideMenu);
+country.addEventListener('click', sayHello());
+
