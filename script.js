@@ -4,19 +4,22 @@ import config from "./env.js";
 const countryContainer = document.getElementById("country-container");
 const openSlide = document.getElementById('open-slide');
 const closeSlide = document.getElementById('close-slide');
-const country = document.getElementsByTagName('a');
-
+const country = document.querySelectorAll('.country');
 
 // Get top hits from API
-async function displayPopularMusic() {
+async function displayPopularMusic(country) {
   const proxyURL = "https://cors-anywhere.herokuapp.com/";
-  const apiURL = `https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=5&country=it&f_has_lyrics=1&apikey=${config.apiKey}`;
+  const apiURL = `https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=5&country=${country}&f_has_lyrics=1&apikey=${config.apiKey}`;
 
   try {
     const response = await fetch(proxyURL + apiURL);
     const data = await response.json();
     const trackList = data.message.body.track_list;
 
+    // Clear previous data 
+    while (countryContainer.children.length > 0) {
+        countryContainer.removeChild(countryContainer.children[0]);
+      }
     trackList.forEach(function (track) {
     // Create wrapper for track data
       const wrapperDiv = document.createElement("div");
@@ -56,17 +59,12 @@ function closeSlideMenu() {
   document.getElementById('country-container').style.marginLeft = '0'
 }
 
-// function getCountryID(){
-//  let country = document.querySelector('#country');
-//  let countryCode = country.dataset.code;
-//  console.log(countryCode);
-// }
- 
-function sayHello() {
-  console.log('hello')
+function countryOnClick(evt){
+  let country = evt.target.dataset.code
+  displayPopularMusic(country);
 }
 // Event Listeners
 openSlide.addEventListener('click', openSlideMenu);
 closeSlide.addEventListener('click', closeSlideMenu);
-country.addEventListener('click', sayHello());
+country.forEach((e) => e.addEventListener('click', countryOnClick));
 
